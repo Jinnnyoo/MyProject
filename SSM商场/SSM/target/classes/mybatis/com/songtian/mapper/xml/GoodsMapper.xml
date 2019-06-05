@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 映射类的文件路径 -->
+<mapper namespace="com.songtian.mapper.GoodsMapper">
+
+
+  <resultMap id="BaseResultMap" type="com.songtian.entity.Goods">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="typeid" jdbcType="VARCHAR" property="typeid" />
+    <result column="good_name" jdbcType="VARCHAR" property="good_name" />
+    <result column="content" jdbcType="VARCHAR" property="content" />
+    <result column="price" jdbcType="DOUBLE" property="price" />
+    <result column="create_date" jdbcType="VARCHAR" property="create_date" />
+    <result column="imgurl" jdbcType="VARCHAR" property="imgurl" />
+  </resultMap>
+  
+  
+  <!-- 分页查询 -->
+  <select id="selectByPage"  resultMap="BaseResultMap">
+  select * from goods LIMIT #{pageindex},#{page}
+  </select>
+  
+   <!-- 编写查询统计总数 -->
+  <select id="selectCount"  resultType="Integer">
+    select  count(id) from goods 
+  </select>
+</mapper>
